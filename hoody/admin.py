@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+
+admin.site.register(User),
+admin.site.register(Neighborhood),
+admin.site.register(Business),
+admin.site.register(Category),
+admin.site.register(Post),
+admin.site.register(Comment),
