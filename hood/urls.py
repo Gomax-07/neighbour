@@ -6,8 +6,11 @@ from hoody.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", landing_page, name='landing_page'),
-    path('hoody/', include('hoody.urls', namespace='hoody'))
+    path("landing/", landing_page, name='landing_page'),
+    path('hoody/', include('hoody.urls', namespace='hoody')),
+    path("blog/", include("blog.urls", namespace='blog')),
+    path("", include("users.urls")),
+
 ]
 
 if settings.DEBUG:

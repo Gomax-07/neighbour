@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hoody.apps.HoodyConfig',
+    'blog.apps.BlogConfig',
+    'users',
     'crispy_forms',
 
 ]
@@ -92,20 +94,20 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+# AUTH_PASSWORD_VALIDATORS = [
+# #     {
+# #         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+# #     },
+# #     {
+# #         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+# #     },
+# #     {
+# #         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+# #     },
+# #     {
+# #         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+# #     },
+# # ]
 
 
 # Internationalization
@@ -136,3 +138,8 @@ STATIC_ROOT = "static_root"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
+
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "dashboard"
