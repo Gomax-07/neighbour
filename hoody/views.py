@@ -42,7 +42,7 @@ def hoody_create(request):
 
 def hoody_update(request, pk):
     neighbor = Neighborhood.objects.get(id=pk)
-    form = NeighborhoodForm(instance=neighbor)
+    form = NeighborhoodForm()
     if request.method == "POST":
         form = NeighborhoodModelForm(request.POST, instance=neighbor)
         if form.is_valid():
@@ -53,3 +53,62 @@ def hoody_update(request, pk):
         'neighbor': neighbor
     }
     return render(request, "hoody/hoody_update.html", context)
+
+
+def hoody_delete(request, pk):
+    neighbor = Neighborhood.objects.get(id=pk)
+    neighbor.delete()
+    return redirect("/hoody")
+
+
+# profile_views
+
+def profile_list(request):
+    profiles = User.objects.all()
+    context = {
+        'profiles': profiles
+    }
+    return render(request, "profile/profile_list.html", context)
+
+
+def profile_create(request):
+    form = UserModelForm()
+    if request.method == "POST":
+        form = UserModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/hoody/profile_list/")
+    context = {
+        "form": form
+    }
+    return render(request, "profile/profile_create.html", context)
+
+
+def profile_update(request, pk):
+    profile = User.objects.get(id=pk)
+    form = UserForm()
+    if request.method == "POST":
+        form = UserModelForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("/hoody/profile_list/")
+    context = {
+        "form": form,
+        'profile': profile
+    }
+    return render(request, "profile/profile.html", context)
+
+
+def profile_delete(request, pk):
+    profile = User.objects.get(id=pk)
+    profile.delete()
+    return redirect("/profile/profile_list/")
+
+
+# business views
+def business_list(request):
+    profiles = User.objects.all()
+    context = {
+        'profiles': profiles
+    }
+    return render(request, "business/business_list.html", context)
