@@ -17,4 +17,12 @@ urlpatterns = [
     path('<int:pk>/update', profile_update, name='profile_update'),
     path('<int:pk>/delete', profile_delete, name='profile_delete'),
 
+    # business_paths
+    path('business_list/', business_list, name='business_list'),
+
+    # posts_paths
+    path("blog_list/", blog_index, name="blog_list"),
+    path("<int:pk>/", blog_detail, name="blog_detail"),
+    path("<category>/", blog_category, name="blog_category"),
+
 ]
