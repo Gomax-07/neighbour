@@ -107,8 +107,38 @@ def profile_delete(request, pk):
 
 # business views
 def business_list(request):
-    profiles = User.objects.all()
+    businesses = Business.objects.all()
     context = {
-        'profiles': profiles
+        'businesses': businesses
     }
     return render(request, "business/business_list.html", context)
+
+
+# post_views
+def blog_index(request):
+    posts = Post.objects.all().order_by('-created_on')
+    context = {
+        "posts": posts,
+    }
+    return render(request, "blog/blog_index.html", context)
+
+
+def blog_category(request, category):
+    posts = Post.objects.filter(
+        categories__name__contains=category
+    ).order_by(
+        '-created_on'
+    )
+    context = {
+        "category": category,
+        "posts": posts
+    }
+    return render(request, "blog/blog_category.html", context)
+
+
+def blog_detail(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {
+        'post': post
+    }
+    return render(request, "blog/blog_detail.html", context)
