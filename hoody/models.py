@@ -15,14 +15,14 @@ class Neighborhood(models.Model):
 class User(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey("Neighborhood", on_delete=models.CASCADE)
     email = models.EmailField(max_length=70)
 
 
 class Business(models.Model):
     name = models.CharField(max_length=150)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey('Neighborhood', on_delete=models.CASCADE)
     email = models.EmailField(max_length=70)
 
 
@@ -36,7 +36,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField('Category', related_name='posts')
-    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey('Neighborhood', on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
