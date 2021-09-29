@@ -18,6 +18,9 @@ class User(models.Model):
     neighborhood = models.ForeignKey("Neighborhood", on_delete=models.CASCADE)
     email = models.EmailField(max_length=70)
 
+    def __str__(self):
+        return self.last_name
+
 
 class Business(models.Model):
     name = models.CharField(max_length=150)
