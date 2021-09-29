@@ -3,8 +3,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from .models import *
 
-User = get_user_model()
-
 
 class NeighborhoodModelForm(forms.ModelForm):
     class Meta:
@@ -22,4 +20,19 @@ class NeighborhoodForm(forms.Form):
     occupantsCount = forms.IntegerField(min_value=0)
 
 
+class UserModelForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name',
+            'last_name',
+            'neighborhood',
+            'email',
+        )
+
+
+class UserForm(forms.Form):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField()
 
