@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <hr>
+    <a href="{% url 'hoody:hoody_list' %}">Back</a>
+    <hr>
+    <h1>Create User-Profile</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}
